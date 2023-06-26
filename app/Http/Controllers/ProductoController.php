@@ -61,6 +61,7 @@ class ProductoController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Eliminar
      */
     public function destroy(Producto $producto)
     {
