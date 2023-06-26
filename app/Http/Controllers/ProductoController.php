@@ -9,10 +9,11 @@ class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * Consultar
      */
     public function index()
     {
-        //
+        return Producto::all();
     }
 
     /**
@@ -25,6 +26,7 @@ class ProductoController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * Crear
      */
     public function store(Request $request)
     {
@@ -49,10 +51,12 @@ class ProductoController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * Actualizar
      */
     public function update(Request $request, Producto $producto)
     {
-        //
+        // dd($producto);
+        Producto::findOrFail($request->id)->update($request->all());
     }
 
     /**
@@ -60,6 +64,6 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        Producto::findOrFail($producto->id)->delete();      
     }
 }
