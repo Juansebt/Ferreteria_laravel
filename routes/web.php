@@ -32,6 +32,11 @@ Route::get('/productos', function () {
     return view('productos');
 });
 
+Route::get('/categorias', function () {
+    return view('categorias');
+});
+
+// RESOURCE
 Route::resource('/producto', ProductoController::class)->only(['index','store','update','destroy']);
 
 Route::resource('/categoria', CategoriaController::class)->only(['index','store','update','destroy']);
