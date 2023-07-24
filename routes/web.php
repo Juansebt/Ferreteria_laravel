@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\inicioC;
 use App\Http\Controllers\ProductoController;
+use Database\Seeders\CategoriaSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +33,5 @@ Route::get('/productos', function () {
 });
 
 Route::resource('/producto', ProductoController::class)->only(['index','store','update','destroy']);
+
+Route::resource('/categoria', CategoriaController::class)->only(['index','store','update','destroy']);
