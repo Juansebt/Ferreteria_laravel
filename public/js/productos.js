@@ -2,7 +2,7 @@ var id = 0
 
 function create() {
     axios
-        .post("/producto", {
+        .post("/productos", {
             nombreProducto: txtNombre.value,
             cantidadProducto: txtCantidad.value,
             estadoProducto: "A",
@@ -18,7 +18,7 @@ function create() {
 
 function read() {
     axios
-        .get("/producto")
+        .get("/productos")
         .then(function (response) {
             console.log(response.data);
             let tableData = document.querySelector("#tblData"); //Id del tableBody
@@ -88,7 +88,7 @@ function accion(registro) {
 }
 
 function update() {
-    axios.put("/producto/" + this.id, {
+    axios.put("/productos/" + this.id, {
         id: this.id,
         nombreProducto: txtNombre.value,
         cantidadProducto: txtCantidad.value,
@@ -105,7 +105,7 @@ function update() {
 function deletes() {
     let respuesta = confirm("¿Está seguro de eliminar el producto?");
     if(respuesta) {
-        axios.delete("/producto/" + this.id)
+        axios.delete("/productos/" + this.id)
         .then(function (response) {
             console.log(response);
             read();

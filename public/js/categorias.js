@@ -1,7 +1,7 @@
 var id = 0;
 
 function create() {
-    axios.post('/categoria',{
+    axios.post('/categorias',{
         nombreCategoria:txtNombre.value,
         codigoCategoria:txtCodigo.value,
         estadoCategoria:"A",
@@ -12,12 +12,24 @@ function create() {
         clear();
     })
     .catch(function (error) {
-        console.log(error);
+        console.log(Object.values(error.response.data.errors));
+        let data = ''
+        Object.values(error.response.data.errors).forEach(element => {
+            console.log(element);
+            data += `${element}<br>`;
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                html: data,
+                allowHtml: true,
+              })
+        });
+        // errores.innerHTML = data;
     });
 }
 
 function read() {
-    axios.get('/categoria')
+    axios.get('/categorias')
     .then(function (response) {
         console.log(response);
         let datos = ''
@@ -37,7 +49,7 @@ function read() {
 }
 
 function update() {
-    axios.put('/categoria/' + this.id, {
+    axios.put('/categorias/' + this.id, {
         id: this.id,
         nombreCategoria: txtNombre.value,
         codigoCategoria: txtCodigo.value,
@@ -53,7 +65,7 @@ function update() {
 function deletes() {
     let respuesta = confirm("¿Está seguro de eliminar la categoria?");
     if(respuesta) {
-        axios.delete('/categoria/' + this.id)
+        axios.delete('/categorias/' + this.id)
         .then(function (response) {
             console.log(response);
             read();

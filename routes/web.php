@@ -28,15 +28,17 @@ Route::get('/prueba', function () {
 // Route::put('/producto/{id}', [ProductoController::class, 'update']);
 // Route::delete('/producto/{id}', [ProductoController::class, 'destroy']);
 
-Route::get('/productos', function () {
+Route::get('/producto', function () {
     return view('productos');
 });
 
-Route::get('/categorias', function () {
+Route::get('/categoria', function () {
     return view('categorias');
 });
 
 // RESOURCE
-Route::resource('/producto', ProductoController::class)->only(['index','store','update','destroy']);
+Route::resource('/productos', ProductoController::class)->only(['index','store','update','destroy']);
 
-Route::resource('/categoria', CategoriaController::class)->only(['index','store','update','destroy']);
+Route::resource('/categorias', CategoriaController::class)->only(['index','store','update','destroy']);
+
+// Route::delete('/categoria/{categoria}', [CategoriaController::class, 'destroy']);
