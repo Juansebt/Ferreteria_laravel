@@ -28,12 +28,13 @@ function create() {
     });
 }
 
-function read() {
-    axios.get('/categorias')
+function read(url = '/categorias') {
+    axios.get(url)
     .then(function (response) {
-        console.log(response);
-        let datos = ''
-        response.data.forEach((element, index) => {
+        console.log(response.data.links);
+        let datos = '';
+        let lista = '';
+        response.data.data.forEach((element, index) => {
             datos += `<tr onclick='load(${JSON.stringify(element)})'>`;
             datos += `<td>${index+1}</td>`;
             datos += `<td>${element.nombreCategoria}</td>`;
@@ -41,7 +42,14 @@ function read() {
             datos += `<td>${element.estadoCategoria}</td>`;
             datos += `</tr>`;
         });
+
+        response.data.links.forEach((element) => {
+            lista += `<td>
+                        <a class="pagina" onclick="read('${element.url}')">${element.label}</a>            
+                    </td>`;
+        });
         tblBody.innerHTML = datos;
+        list.innerHTML = lista;
     })
     .catch(function (error) {
         console.log(error);

@@ -28,6 +28,10 @@ Route::get('/prueba', function () {
 // Route::put('/producto/{id}', [ProductoController::class, 'update']);
 // Route::delete('/producto/{id}', [ProductoController::class, 'destroy']);
 
+Route::get('/login', function () {
+   return view('welcome'); 
+})->name('login');
+
 Route::get('/producto', function () {
     return view('productos');
 });
@@ -37,7 +41,7 @@ Route::get('/categoria', function () {
 });
 
 // RESOURCE
-Route::resource('/productos', ProductoController::class)->only(['index','store','update','destroy']);
+Route::resource('/productos', ProductoController::class)->only(['index','store','update','destroy'])->middleware('cantidad');
 
 Route::resource('/categorias', CategoriaController::class)->only(['index','store','update','destroy']);
 

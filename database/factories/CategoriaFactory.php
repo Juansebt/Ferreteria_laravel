@@ -17,7 +17,9 @@ class CategoriaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nombreCategoria' => fake()->text($maxNbChars = 20),
+            'codigoCategoria' => fake()->numberBetween($min = 0, $max = 1000),
+            'estadoCategoria' => 'A'
         ];
     }
 }
