@@ -28,6 +28,10 @@ Route::get('/prueba', function () {
 // Route::put('/producto/{id}', [ProductoController::class, 'update']);
 // Route::delete('/producto/{id}', [ProductoController::class, 'destroy']);
 
+Route::get('/', function () {
+    return view('index');
+});
+
 Route::get('/login', function () {
    return view('welcome'); 
 })->name('login');
