@@ -1,9 +1,10 @@
 <template>
     <div>
         <h1>Lista</h1>
-        <select name="" id="">
-            <option value="" v-for="{ name } in arrayPokemon" v-text="name"></option>
+        <select name="" id="" @change="imagenPokemon" v-model="imgUrlPokemon">
+            <option v-for="{ name, url } in arrayPokemon" v-text="name" :value="url"></option>
         </select>
+        <button @click="enviar" style="margin-left: 5px;">Enviar</button>
     </div>
 </template>
 
@@ -11,7 +12,9 @@
     export default {
     data() {
         return {
-            arrayPokemon : []
+            arrayPokemon : [],
+            imgUrlPokemon: '',
+            imgArtWork: ''
         }
     },
     methods: {
@@ -24,6 +27,19 @@
             .catch(error => {
                 console.log(error);
             })
+        },
+        async imagenPokemon() {
+            axios.get(this.imgUrlPokemon)
+            .then(res => {
+                console.log(res)
+                this.imgArtWork = res.data.sprites.other["official-artwork"].front_default
+            })
+            .catch(err => {
+                console.error(err); 
+            })
+        },
+        enviar() {
+            this.$emit("image",this.imgArtWork)
         }
     },
     mounted() {

@@ -2,7 +2,7 @@
     <h1>
         POKEMÓN
     </h1>
-    <List></List>
+    <List @getImage="image"></List>
     <Image></Image>
 </template>
 <script>
@@ -16,14 +16,16 @@ export default {
     },
     data() {
         return {
-            
+            image: '',
         }
     },
     methods: {
-        
+        getImage(data) {
+            this.image = data
+        }
     },
     mounted() {
-        // this.consultaPokemon()
+        
     },
 }
 </script>
