@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div class="container mb-4 col-6">
         <h1>Lista</h1>
-        <select name="" id="" @change="imagenPokemon" v-model="imgUrlPokemon">
+        <select  class="form-select" @change="imagenPokemon" v-model="imgUrlPokemon">
+            <option value="" selected disabled>Seleccione un pokemón</option>
             <option v-for="{ name, url } in arrayPokemon" v-text="name" :value="url"></option>
         </select>
         <!-- <button @click="enviar" style="margin-left: 5px;">Enviar</button> -->

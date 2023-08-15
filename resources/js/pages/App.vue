@@ -1,32 +1,39 @@
 <template>
+    <hr>
     <div>
-        <h1>
+        <h1 class="text-center mt-4">
             POKEMÓN
         </h1>
-        <List @imagen-pokemon="getImage"></List>
-        <Image :imagePokemon="imagen"></Image>
+        <div class="row m-5 text-center px-5">
+            <List @imagen-pokemon="getImage"></List>
+            <Image :imagePokemon="imagen"></Image>
+        </div>
     </div>
-    <div>
-        <h1>FOTO</h1>
+    <br>
+    <hr>
+    <hr>
+    <br>
+    <div class="container">
+        <h1 class="text-center">FOTO</h1>
         <form action="">
             <div>
-                <label for="txtWidth">Ancho de la foto: </label>
-                <input type="number" id="txtWidth" v-model="anchoFoto">
+                <label for="txtWidth" class="form-label">Ancho de la foto: </label>
+                <input type="number" id="txtWidth" v-model="anchoFoto" class="form-control">
             </div>
             <br>
             <div>
-                <label for="txtHeight">Alto de la foto: </label>
-                <input type="number" id="txtHeight" v-model="altoFoto">
+                <label for="txtHeight" class="form-label">Alto de la foto: </label>
+                <input type="number" id="txtHeight" v-model="altoFoto" class="form-control">
+            </div>
+            <br>
+            <div class="form-check">
+                <label for="" class="form-check-label">Agregar Grayscale</label>
+                <input type="checkbox" v-model="agregarGrayscale" class="form-check-input">
             </div>
             <br>
             <div>
-                <label for="">Agregar Grayscale: </label>
-                <input type="checkbox" v-model="agregarGrayscale">
-            </div>
-            <br>
-            <div>
-                <label for="">Agregar Blur: </label>
-                <select v-model="agregarBlur">
+                <label for="" class="form-label">Agregar Blur: </label>
+                <select v-model="agregarBlur" id="cbBlur" class="form-select">
                     <option value="">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -42,12 +49,13 @@
             </div>
             <br>
             <div>
-                <button @click="getFoto" type="button">Crear foto</button>
+                <button @click="getFoto" type="button" class="btn btn-outline-primary" style="width: 100%;">Crear foto</button>
             </div>
         </form>
         <br>
         <Foto :imagenGenerada="miPic" v-if="miPic"></Foto>
     </div>
+    <hr>
 </template>
 <script>
 import axios from 'axios';
