@@ -2,8 +2,8 @@
     <h1>
         POKEMÓN
     </h1>
-    <List @getImage="image"></List>
-    <Image></Image>
+    <List @imagen-pokemon="getImage"></List>
+    <Image :imagePokemon="imagen"></Image>
 </template>
 <script>
 import List from '@/components/ListPokemon.vue'
@@ -16,12 +16,12 @@ export default {
     },
     data() {
         return {
-            image: '',
+            imagen: '',
         }
     },
     methods: {
         getImage(data) {
-            this.image = data
+            this.imagen = data
         }
     },
     mounted() {

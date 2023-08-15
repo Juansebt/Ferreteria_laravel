@@ -4,7 +4,7 @@
         <select name="" id="" @change="imagenPokemon" v-model="imgUrlPokemon">
             <option v-for="{ name, url } in arrayPokemon" v-text="name" :value="url"></option>
         </select>
-        <button @click="enviar" style="margin-left: 5px;">Enviar</button>
+        <!-- <button @click="enviar" style="margin-left: 5px;">Enviar</button> -->
     </div>
 </template>
 
@@ -33,13 +33,14 @@
             .then(res => {
                 console.log(res)
                 this.imgArtWork = res.data.sprites.other["official-artwork"].front_default
+                this.enviar()
             })
             .catch(err => {
                 console.error(err); 
             })
         },
         enviar() {
-            this.$emit("image",this.imgArtWork)
+            this.$emit("imagenPokemon",this.imgArtWork)
         }
     },
     mounted() {
